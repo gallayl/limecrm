@@ -1,0 +1,71 @@
+{
+  "name": "furystack-boilerplate-app",
+  "version": "1.0.1",
+  "description": "example web app based on furystack",
+  "main": "service/src/index.ts",
+  "repository": "https://github.com/gallayl/fury.git",
+  "author": "Gallay Lajos <gallay.lajos@gmail.com>",
+  "license": "GPL-2.0-only",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "common",
+      "frontend",
+      "service"
+    ],
+    "nohoist": []
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.4",
+    "jest": "^26.1.0",
+    "jest-junit": "^11.0.1",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.6.1",
+    "@typescript-eslint/parser": "^3.6.1",
+    "concurrently": "^5.2.0",
+    "eslint": "^7.4.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jsdoc": "^29.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.9.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --ext .tsx,.ts --cache --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "build": "tsc -b && yarn workspace frontend build",
+    "seed": "yarn workspace service seed",
+    "test:e2e": "concurrently --kill-others \"yarn startService\" \"yarn startFrontend\" \"yarn workspace frontend run cypress run\" --success first ",
+    "test:unit": "jest --verbose",
+    "open:cypress": "concurrently --kill-others \"yarn startService\" \"yarn startFrontend\" \"yarn workspace frontend run cypress open\" --success first ",
+    "start": "concurrently --kill-others \"yarn startService\" \"yarn startFrontend\"  ",
+    "startService": "yarn workspace service start",
+    "startFrontend": "yarn workspace frontend start --env.APP_SERVICE_URL=http://localhost:9090",
+    "clean": "rimraf service/dist frontend/dist **/tsconfig.tsbuildinfo tsconfig.tsbuildinfo common/dist",
+    "lint": "eslint . --ext .tsx,.ts --cache"
+  },
+  "jest-junit": {
+    "suiteName": "FuryStack Jest tests",
+    "outputDirectory": "./coverage"
+  }
+}
