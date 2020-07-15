@@ -38,9 +38,6 @@ steps:
       testRunner: JUnit
       testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/junit.xml'
 
-  - script: yarn test:e2e
-    displayName: 'E2E tests'
-
   - task: PublishTestResults@2
     displayName: Publish test results
     condition: always()
