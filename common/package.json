@@ -9,6 +9,7 @@
     "build": "tsc -b"
   },
   "devDependencies": {},
+  "typings": "dist/index.d.ts",
   "dependencies": {
     "tslib": "^2.0.0"
   }
