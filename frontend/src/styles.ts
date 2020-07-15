@@ -1,5 +1,6 @@
 const colors = {
   lime: '#C7EA46',
+  limeDark: '#C0E038',
 }
 
 export const Styles = {
@@ -19,7 +20,6 @@ export const Styles = {
     display: 'flex',
     placeContent: 'center',
     placeItems: 'center',
-    backgroundColor: colors.lime,
   } as React.CSSProperties,
   contentItems: {
     width: '300px',
