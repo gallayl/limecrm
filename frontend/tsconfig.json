@@ -12,5 +12,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src", "./typings"]
+  "include": ["src", "./typings"],
+  "references": [{ "path": "../common" }]
 }
