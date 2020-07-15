@@ -28,6 +28,9 @@ export const UploadModal: React.FC<{
       if (response.ok) {
         const image: models.Image = await response.json()
         onImageUploaded(image)
+        setFile(null)
+        setFilePreview(null)
+        setDescription('')
         onClose()
       }
     } finally {
