@@ -1,5 +1,5 @@
 import { config, models } from 'common'
-import React, { HTMLProps, useState } from 'react'
+import React, { HTMLProps, useCallback, useState } from 'react'
 import { Styles } from '../styles'
 import linkSvg from '../assets/link.svg'
 import { humanReadableSize } from '../utils/human-readable-size'
@@ -31,6 +31,18 @@ export const ImageItem: React.FC<models.Image> = (image) => {
   const { service } = config.Hosts
 
   const [hovered, setHovered] = useState(false)
+  const [imageUrl] = useState(
+    `${service.baseUrl}:${service.port}${service.urls.getSingleImage.replace(':id', image.binaryId)}`,
+  )
+
+  const copyImageUrl = useCallback(() => {
+    const el = document.createElement('textarea')
+    el.value = imageUrl
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }, [imageUrl])
 
   return (
     <div
@@ -44,7 +56,7 @@ export const ImageItem: React.FC<models.Image> = (image) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}>
       <img
-        src={`${service.baseUrl}:${service.port}${service.urls.getSingleImage.replace(':id', image.binaryId)}`}
+        src={imageUrl}
         style={{
           width: '100%',
           height: '100%',
@@ -76,7 +88,7 @@ export const ImageItem: React.FC<models.Image> = (image) => {
               {humanReadableSize(image.size)}
             </p>
           </div>
-          <img src={linkSvg} style={{ cursor: 'pointer' }} title="Copy Link" />
+          <img src={linkSvg} style={{ cursor: 'pointer' }} title="Copy Link" onClick={copyImageUrl} />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gridGap: '0.5em', margin: '0 1.5em' }}>
           <GridLabel>Uploaded</GridLabel>
