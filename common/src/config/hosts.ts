@@ -8,5 +8,5 @@ export const Hosts = {
       getSingleImage: '/images/:id',
     },
   },
-  frontend: 'http://localhost:8080',
+  frontend: process.env.FRONTEND_URL || 'http://localhost:8080',
 }
