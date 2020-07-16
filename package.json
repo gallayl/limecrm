@@ -53,7 +53,7 @@
     ]
   },
   "scripts": {
-    "build": "tsc -b && yarn workspace frontend build",
+    "build": "yarn workspace service build && yarn workspace frontend build",
     "seed": "yarn workspace service seed",
     "test:unit": "jest --verbose",
     "start": "concurrently --kill-others \"yarn startService\" \"yarn startFrontend\"  ",
