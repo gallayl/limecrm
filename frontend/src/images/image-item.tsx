@@ -95,7 +95,7 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
           display: 'flex',
           flexDirection: 'column',
         }}>
-        <div style={{ display: 'flex', padding: '1em' }}>
+        <div style={{ display: 'flex', padding: '1em', justifyContent: 'space-between' }}>
           <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
             <GridLabel
               title={image.fileName}
