@@ -38,6 +38,8 @@ export const Content: React.FC = () => {
           display: 'flex',
           flexWrap: 'wrap',
           overflow: 'auto',
+          scrollSnapMargin: '2em',
+          scrollSnapType: 'y mandatory',
         }}>
         <Suspense
           fallback={

@@ -62,7 +62,7 @@ export const UploadModal: React.FC<{
             </div>
           ) : null}
           <form
-            style={{ minWidth: '600px', margin: '2em', maxWidth: '100%', maxHeight: '100%' }}
+            style={{ margin: '2em', maxWidth: '100%', maxHeight: '100%' }}
             onSubmit={(ev) => {
               ev.preventDefault()
               send()
@@ -86,7 +86,7 @@ export const UploadModal: React.FC<{
                       style={{
                         objectFit: 'contain',
                         maxWidth: '100%',
-                        maxHeight: '400px',
+                        maxHeight: 'calc(128px + 1em)',
                         margin: '1em',
                         boxShadow: '3px 3px 8px',
                       }}
@@ -132,12 +132,12 @@ export const UploadModal: React.FC<{
                   backgroundColor: 'white',
                 }}></textarea>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div
+              style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>
-                {' '}
                 By uploading an image, you accept our <a href="">Terms</a>
               </span>
-              <Button style={{ padding: '.5em' }} type="submit">
+              <Button style={{ padding: '.5em', marginLeft: '2em' }} type="submit">
                 Save
               </Button>
             </div>

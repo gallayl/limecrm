@@ -8,9 +8,12 @@ export const ImageCollection: React.FC<{ images: models.Image[] }> = ({ images }
   const [loadedImages, setLoadedImages] = useState<models.Image[]>(images)
   return (
     <>
-      <AddImage style={Styles.contentItems} onImageUploaded={(image) => setLoadedImages([image, ...loadedImages])} />
+      <AddImage
+        style={{ ...Styles.contentItems, scrollSnapAlign: 'start' }}
+        onImageUploaded={(image) => setLoadedImages([image, ...loadedImages])}
+      />
       {loadedImages.map((image) => (
-        <ImageItem {...image} key={image.id} />
+        <ImageItem image={image} key={image.id} style={{ scrollSnapAlign: 'start' }} />
       ))}
     </>
   )

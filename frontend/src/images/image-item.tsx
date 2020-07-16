@@ -27,7 +27,7 @@ export const GridContent: React.FC = ({ children }) => (
   </div>
 )
 
-export const ImageItem: React.FC<models.Image> = (image) => {
+export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Image }> = ({ style, image }) => {
   const { service } = config.Hosts
 
   const [hovered, setHovered] = useState(false)
@@ -52,6 +52,7 @@ export const ImageItem: React.FC<models.Image> = (image) => {
         overflow: 'hidden',
         transition: 'box-shadow 400ms cubic-bezier(0.470, 0.000, 0.745, 0.715)',
         boxShadow: hovered ? '3px 3px 10px rgba(0,0,0,0.8)' : '5px 5px 25px rgba(0,0,0,0.6)',
+        ...style,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}>
