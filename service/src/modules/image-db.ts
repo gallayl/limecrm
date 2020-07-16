@@ -32,6 +32,7 @@ export class ImageDb implements DisposableService {
           type: DataTypes.INTEGER.UNSIGNED,
         },
         height: { type: DataTypes.INTEGER.UNSIGNED },
+        orientation: { type: DataTypes.INTEGER.UNSIGNED },
         creationDate: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
         description: { type: DataTypes.STRING },
         fileName: { type: DataTypes.STRING },

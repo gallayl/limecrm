@@ -50,6 +50,15 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
     document.body.removeChild(el)
   }, [imageUrl])
 
+  const orientationsToRotate = [6, 8]
+
+  const originalOrientation = image.width > image.height ? 'landscape' : 'portrait'
+  const parsedOrientation = orientationsToRotate.includes(image.orientation)
+    ? originalOrientation === 'portrait'
+      ? 'landscape'
+      : 'portrait'
+    : originalOrientation
+
   return (
     <div
       style={{
@@ -65,8 +74,8 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
       <img
         src={imageUrl}
         style={{
-          width: '100%',
-          height: '100%',
+          maxWidth: parsedOrientation === 'portrait' ? '100%' : 'auto',
+          maxHeight: parsedOrientation === 'landscape' ? '100%' : 'auto',
           objectFit: 'cover',
           transform: hovered ? 'scale(1)' : 'scale(1.05)',
           transition: 'transform 700ms cubic-bezier(0.470, 0.000, 0.745, 0.715)',

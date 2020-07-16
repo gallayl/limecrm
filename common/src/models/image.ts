@@ -5,6 +5,7 @@ export interface Image {
   size: number
   width: number
   height: number
+  orientation: number
   description: string
   binaryId: string
 }

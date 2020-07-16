@@ -27,10 +27,13 @@ export const createPostNewImageRoute: (db: ImageDb, binaryStore: ImageBinaryStor
     return
   }
 
-  const { width, height } = await new Promise<{ width: number; height: number }>((resolve, reject) =>
-    imageSize(file.path, (err, result) => {
-      err ? reject(err) : resolve({ width: result?.width || 0, height: result?.height || 0 })
-    }),
+  const { width, height, orientation } = await new Promise<{ width: number; height: number; orientation: number }>(
+    (resolve, reject) =>
+      imageSize(file.path, (err, result) => {
+        err
+          ? reject(err)
+          : resolve({ width: result?.width || 0, height: result?.height || 0, orientation: result?.orientation || 0 })
+      }),
   )
 
   const binaryId = await binaryStore.upload(file)
@@ -43,6 +46,7 @@ export const createPostNewImageRoute: (db: ImageDb, binaryStore: ImageBinaryStor
       width,
       height,
       binaryId,
+      orientation,
     })
 
     resp.json(created.toJSON())
