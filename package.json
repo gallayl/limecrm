@@ -57,7 +57,7 @@
     "seed": "yarn workspace service seed",
     "test:unit": "jest --verbose",
     "start": "concurrently --kill-others \"yarn startService\" \"yarn startFrontend\"  ",
-    "startService": "yarn workspace service start",
+    "startService": "node ./service/dist/index.js",
     "startFrontend": "yarn workspace frontend start --env.APP_SERVICE_URL=http://localhost:9090",
     "clean": "rimraf service/dist frontend/dist **/tsconfig.tsbuildinfo tsconfig.tsbuildinfo common/dist",
     "lint": "eslint . --ext .tsx,.ts --cache"
