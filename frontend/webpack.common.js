@@ -40,7 +40,7 @@ module.exports = {
       template: './index.html',
     }),
     new webpack.EnvironmentPlugin({
-      SERVICE_URL: config.Hosts.service.baseUrl,
+      SERVICE_BASE_URL: config.Hosts.service.baseUrl,
       SERVICE_PORT: config.Hosts.service.port,
       APP_VERSION: require('./package.json').version,
       BUILD_DATE: new Date().toISOString(),
