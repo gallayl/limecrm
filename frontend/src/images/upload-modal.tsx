@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import React, { useState } from 'react'
 import { config, models } from 'common'
 import { Button, Modal } from '../common'
@@ -115,7 +116,7 @@ export const UploadModal: React.FC<{
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', margin: '3em 0 5em 0' }}>
-              <label htmlFor="uploadDescription" style={{ marginBottom: '0' }}>
+              <label htmlFor="uploadDescription" style={{ marginBottom: '1em', fontWeight: 500 }}>
                 Description
               </label>
               <textarea
@@ -134,11 +135,23 @@ export const UploadModal: React.FC<{
                 }}></textarea>
             </div>
             <div
-              style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                fontSize: '0.8em',
+              }}>
               <span>
-                By uploading an image, you accept our <a href="">Terms</a>
+                By uploading an image, you accept our{' '}
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  style={{ textDecoration: 'none', fontWeight: 'bolder', color: '#67C4EF' }}>
+                  Terms
+                </a>
               </span>
-              <Button style={{ padding: '.5em', marginLeft: '2em' }} type="submit">
+              <Button style={{ padding: '.7em 2.5em', marginLeft: '2em' }} type="submit">
                 Save
               </Button>
             </div>
