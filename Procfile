@@ -1,0 +1,1 @@
+web: node service/dist/index.js
