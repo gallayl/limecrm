@@ -11,7 +11,7 @@ export class ImageDb implements DisposableService {
 
   private readonly config = getDatabaseConfig({ logger: this.logger })
 
-  private readonly db = new Sequelize(this.config.uri, this.config.options)
+  private readonly db = new Sequelize(this.config.options)
 
   public async addImage(image: ImageCreationAttributes) {
     const created = new ImageModel(image)

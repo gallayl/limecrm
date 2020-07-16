@@ -67,3 +67,4 @@ frontend/bundle
 service/data.sqlite
 frontend/testresults
 image-binaries
+images.sqlite
