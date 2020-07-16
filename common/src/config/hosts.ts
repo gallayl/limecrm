@@ -1,7 +1,7 @@
 export const Hosts = {
   service: {
-    baseUrl: 'http://localhost',
-    port: 9090,
+    baseUrl: process.env.SERVICE_BASE_URL || 'http://localhost',
+    port: process.env.SERVICE_PORT || 9090,
     urls: {
       getImageList: '/images',
       postImage: '/images',

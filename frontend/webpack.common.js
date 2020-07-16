@@ -1,6 +1,8 @@
-var path = require('path')
-
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { config } = require('common')
 
 module.exports = {
   mode: 'development',
@@ -9,7 +11,7 @@ module.exports = {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
     publicPath: '/',
-    path: path.resolve(__dirname + '/bundle'),
+    path: path.resolve(`${__dirname}/bundle`),
   },
   optimization: {
     splitChunks: {
@@ -36,6 +38,12 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
+    }),
+    new webpack.EnvironmentPlugin({
+      SERVICE_URL: config.Hosts.service.baseUrl,
+      SERVICE_PORT: config.Hosts.service.port,
+      APP_VERSION: require('./package.json').version,
+      BUILD_DATE: new Date().toISOString(),
     }),
   ],
   module: {
@@ -73,5 +81,8 @@ module.exports = {
         },
       },
     ],
+  },
+  performance: {
+    hints: false,
   },
 }
