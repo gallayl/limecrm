@@ -33,9 +33,9 @@ export const Styles = {
     placeItems: 'center',
   } as React.CSSProperties,
   contentItems: {
-    width: '300px',
-    height: '300px',
-    margin: '16px',
+    width: '350px',
+    height: '350px',
+    margin: '24px',
     flexShrink: 0,
   } as React.CSSProperties,
 }

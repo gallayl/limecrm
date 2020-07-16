@@ -11,17 +11,23 @@ export const GridLabel: React.FC<HTMLProps<any>> = ({ children, ...props }) => (
     style={{
       color: Styles.colors.lime,
       fontWeight: 'bolder',
-      fontSize: '1,5em',
+      fontSize: '1.2em',
+      verticalAlign: 'baseline',
       ...props.style,
     }}>
     {children}
   </div>
 )
 
-export const GridContent: React.FC = ({ children }) => (
+export const GridContent: React.FC<HTMLProps<any>> = ({ children, ...props }) => (
   <div
+    {...props}
     style={{
       color: 'white',
+      display: 'flex',
+      alignItems: 'flex-end',
+      fontSize: '1.1em',
+      ...props.style,
     }}>
     {children}
   </div>
@@ -54,8 +60,8 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
         boxShadow: hovered ? '3px 3px 10px rgba(0,0,0,0.8)' : '5px 5px 25px rgba(0,0,0,0.6)',
         ...style,
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}>
+      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHovered(true)}>
       <img
         src={imageUrl}
         style={{
@@ -82,7 +88,9 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
         }}>
         <div style={{ display: 'flex', padding: '1em' }}>
           <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            <GridLabel title={image.fileName} style={{ textOverflow: 'ellipsis', overflow: 'hidden', fontWeight: 300 }}>
+            <GridLabel
+              title={image.fileName}
+              style={{ textOverflow: 'ellipsis', overflow: 'hidden', fontWeight: 300, fontSize: '1.4em' }}>
               {image.fileName}
             </GridLabel>
             <p style={{ color: 'white', fontWeight: 'bolder' }} title={`${image.size} bytes`}>
@@ -91,17 +99,27 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
           </div>
           <img src={linkSvg} style={{ cursor: 'pointer' }} title="Copy Link" onClick={copyImageUrl} />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gridGap: '0.5em', margin: '0 1.5em' }}>
-          <GridLabel>Uploaded</GridLabel>
+        <div style={{ display: 'grid', gridTemplateColumns: 'auto auto', gridGap: '0.5em', margin: '0 1em' }}>
+          <GridLabel>Uploaded:</GridLabel>
           <GridContent>{formatDate(new Date(image.creationDate))}</GridContent>
-          <GridLabel>Size</GridLabel>
+          <GridLabel>Size:</GridLabel>
           <GridContent>
             {image.width} x {image.height}
           </GridContent>
         </div>
-        <div style={{ margin: '1em 1.5em 0 1.5em' }}>
-          <GridLabel>Description</GridLabel>
-          <GridContent>{image.description}</GridContent>
+        <div style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <GridLabel style={{ margin: '1em 1em 0 1em' }}>Description</GridLabel>
+          <GridContent
+            style={{
+              display: 'inline',
+              margin: '1em',
+              fontWeight: 'lighter',
+              fontSize: '1em',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}>
+            {image.description}
+          </GridContent>
         </div>
       </div>
     </div>

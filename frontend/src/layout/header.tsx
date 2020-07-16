@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
       style={{
         backgroundColor: Styles.colors.lime,
         display: 'flex',
-        filter: 'drop-shadow(8px 8px 32px black)',
+        filter: 'drop-shadow(rgba(0,0,0,0.4) 8px 8px 32px)',
       }}>
       <img style={{ margin: '0px 1em 0px 2em' }} src={Lime} alt="Lime Logo" />
       <h1

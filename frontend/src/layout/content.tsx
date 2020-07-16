@@ -31,7 +31,9 @@ const ImageList = React.lazy(async () => {
 export const Content: React.FC = () => {
   return (
     <>
-      <h1 style={{ color: Styles.text.defaultColor, margin: '2em 0 0 1em', fontWeight: 900 }}>Uploaded images</h1>
+      <h1 style={{ color: Styles.text.defaultColor, margin: '1em', fontSize: '2.1em', fontWeight: 900 }}>
+        Uploaded images
+      </h1>
       <div
         style={{
           flexGrow: 1,
