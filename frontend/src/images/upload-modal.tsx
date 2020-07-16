@@ -15,7 +15,7 @@ export const UploadModal: React.FC<{
   const [description, setDescription] = useState<string>('')
   const [isUploading, setIsUploading] = useState(false)
 
-  const send = useCallback(async () => {
+  const send = async () => {
     try {
       const { service } = config.Hosts
       setIsUploading(true)
@@ -37,7 +37,7 @@ export const UploadModal: React.FC<{
     } finally {
       setIsUploading(false)
     }
-  }, [description, file, onImageUploaded, onClose])
+  }
 
   return (
     <Modal
