@@ -119,6 +119,7 @@ export const UploadModal: React.FC<{
                 Description
               </label>
               <textarea
+                defaultValue={description}
                 name="description"
                 required
                 id="uploadDescription"
