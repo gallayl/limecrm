@@ -67,6 +67,7 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
         overflow: 'hidden',
         transition: 'box-shadow 400ms cubic-bezier(0.470, 0.000, 0.745, 0.715)',
         boxShadow: hovered ? '3px 3px 10px rgba(0,0,0,0.8)' : '5px 5px 25px rgba(0,0,0,0.6)',
+        borderRadius: '8px',
         ...style,
       }}
       onMouseLeave={() => setHovered(false)}
@@ -90,7 +91,7 @@ export const ImageItem: React.FC<{ style: React.CSSProperties; image: models.Ima
           height: '100%',
           backgroundColor: 'rgba(0,0,0,0.6)',
           opacity: hovered ? 1 : 0,
-          backdropFilter: 'blur(10px)',
+          backdropFilter: hovered ? 'blur(10px)' : 'none',
           transition: 'opacity 200ms cubic-bezier(0.470, 0.000, 0.745, 0.715)',
           display: 'flex',
           flexDirection: 'column',
