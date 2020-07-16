@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { config, models } from 'common'
 import { Button, Modal } from '../common'
 import { Loader } from '../common/loader'
+import { Styles } from '../styles'
 import { UploadButton } from './upload-button'
 
 export const UploadModal: React.FC<{
@@ -48,17 +49,13 @@ export const UploadModal: React.FC<{
           {isUploading ? (
             <div
               style={{
+                ...Styles.common.fillCenter,
                 position: 'absolute',
-                width: '100%',
-                height: '100%',
                 top: 0,
                 left: 0,
                 backgroundColor: '#eee',
                 zIndex: 1,
-                display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
               }}>
               <Loader style={{ width: '128px', height: '128px', marginBottom: '2em' }} />
               Uploading Image...

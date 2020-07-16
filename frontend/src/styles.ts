@@ -3,8 +3,19 @@ const colors = {
   limeDark: '#C0E038',
 }
 
+const common = {
+  fillCenter: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  } as React.CSSProperties,
+}
+
 export const Styles = {
   colors,
+  common,
   text: {
     defaultColor: '#464646',
     headerStyle: {
