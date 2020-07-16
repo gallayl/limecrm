@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { config, models } from 'common'
 import { Button, Modal } from '../common'
 import { Loader } from '../common/loader'

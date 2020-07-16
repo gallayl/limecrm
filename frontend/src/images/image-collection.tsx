@@ -9,8 +9,8 @@ export const ImageCollection: React.FC<{ images: models.Image[] }> = ({ images }
   return (
     <>
       <AddImage style={Styles.contentItems} onImageUploaded={(image) => setLoadedImages([image, ...loadedImages])} />
-      {loadedImages.map((image, index) => (
-        <ImageItem {...image} key={index} />
+      {loadedImages.map((image) => (
+        <ImageItem {...image} key={image.id} />
       ))}
     </>
   )
